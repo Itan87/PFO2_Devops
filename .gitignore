@@ -1,0 +1,17 @@
+# Python
+pycache/
+*.pyc
+
+# Entorno Virtual
+venv/
+.env
+
+# Archivos de Base de Datos
+db.sqlite3
+
+# Archivos de Sistema Operativo
+.DS_Store
+
+# Carpetas de Docker Toolbox 
+.docker/
+VirtualBox VMs/

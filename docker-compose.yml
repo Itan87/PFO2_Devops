@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  # 1. Servicio WEB (Django)
+  web:
+    build: . # Usa el Dockerfile en la misma carpeta
+    container_name: django_app_web
+    ports:
+      - "8000:8000" # Mapea el puerto para acceso externo
+    depends_on:
+      - db # Espera a que la base de datos esté lista
+    networks:
+      - mi_red_practica # Usa la red interna
+
+  # 2. Servicio DB (MySQL)
+  db:
+    image: mysql:8 # Descarga la imagen pública de MySQL 8 automáticamente
+    container_name: mysql_practica_db
+    restart: always
+    environment: # Variables para configuración de MySQL
+      MYSQL_DATABASE: practica
+      MYSQL_ROOT_PASSWORD: 12345
+    networks:
+      - mi_red_practica # Usa la red interna
+
+networks:
+  mi_red_practica:
+    driver: bridge
