@@ -1,5 +1,9 @@
-# Usa una imagen base de Python ligera (para que la imagen final sea pequeña)
+# Imagen base de Python ligera 
 FROM python:3.10-slim
+
+# --- LÍNEAS PARA COMPILAR mysqlclient ---
+RUN apt-get update && apt-get install -y default-libmysqlclient-dev pkg-config build-essential
+# --------------------------------------------------------
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
